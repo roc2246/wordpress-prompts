@@ -1,17 +1,17 @@
 # Project Context
 
-Project: Generic Outdoor Theme
+Project: WordPress Theme
 
 Purpose:
-A custom WordPress theme intended to demonstrate professional
-WordPress development skills to employers and clients.
+A reusable WordPress theme project that can be adapted for different
+brands, industries, and site requirements.
 
 Current Goals:
 - Build reusable components
 - Improve SCSS architecture
 - Follow WordPress standards
 - Maintain accessibility
-- Create portfolio-quality code
+- Keep code portable across theme projects
 
 Primary Technologies:
 - PHP

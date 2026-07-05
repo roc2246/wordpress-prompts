@@ -1,13 +1,13 @@
 # Project Instructions
 
-This project uses the `.ai/` directory as the single source of truth.
+This project uses repository documentation files as the single source of truth.
 
 Follow the documentation in:
 
-* `.ai/project-context.md`
-* `.ai/project-instructions.md`
-* `.ai/coding-standards.md`
-* `.ai/style-guide.md`
-* `.ai/wordpress-best-practices.md`
-* `.ai/employer-review-checklist.md`
+* `project-context.md`
+* `project-instructions.md`
+* `coding-standards.md`
+* `style-guide.md`
+* `wordpress-best-practices.md`
+* `architecture.md`
 

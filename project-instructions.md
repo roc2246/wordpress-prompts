@@ -1,10 +1,10 @@
 # Project Instructions
 
-This is a custom WordPress theme project.
+This is a WordPress theme project.
 
 ## Main Goals
 
-* Build a professional, employer-presentable WordPress theme
+* Build a professional, maintainable WordPress theme
 * Use clean PHP, SCSS, and JavaScript
 * Keep components reusable and understandable
 * Prioritize accessibility, responsiveness, and maintainability
@@ -41,14 +41,14 @@ Prioritize:
 4. WordPress best practices
 5. Security
 6. Reusability
-7. Employer readiness
+7. Project readiness
 
 Focus on practical improvements that would matter to:
 
 * WordPress agencies
 * Small businesses
 * Freelance clients
-* Junior developer hiring managers
+* In-house development teams
 
 Avoid recommending unnecessary complexity.
 

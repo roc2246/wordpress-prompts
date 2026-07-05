@@ -4,11 +4,11 @@
 
 Before reviewing the code, use the standards and requirements defined in:
 
-- .ai/project-context.md
-- .ai/coding-standards.md
-- .ai/style-guide.md
-- .ai/wordpress-best-practices.md
-- .ai/employer-review-checklist.md
+- project-context.md
+- coding-standards.md
+- style-guide.md
+- wordpress-best-practices.md
+- architecture.md
 
 If any project-specific instructions conflict with generic WordPress advice, prioritize the project files above.
 
@@ -16,7 +16,7 @@ If any project-specific instructions conflict with generic WordPress advice, pri
 
 ## Context
 
-This project may be part of a portfolio, freelance project, agency project, or production WordPress website.
+This project may be a custom WordPress implementation with different business and technical requirements.
 
 Review the provided WordPress plugin code.
 
@@ -52,7 +52,7 @@ Evaluate:
 - Accessibility
 - Naming conventions
 - Separation of concerns
-- Agency readiness
+- Production readiness
 
 ## Return Format
 
@@ -63,7 +63,7 @@ Evaluate:
 5. Accessibility Concerns
 6. WordPress Best Practice Violations
 7. Suggested Improvements
-8. Employer Readiness
+8. Production Readiness
 
 Prioritize:
 

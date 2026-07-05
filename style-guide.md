@@ -2,7 +2,7 @@
 
 ## General Style
 
-This theme should look clean, professional, and employer-presentable.
+This theme should look clean, professional, and adaptable to different project needs.
 
 Prioritize:
 - Readability

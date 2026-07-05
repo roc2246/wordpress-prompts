@@ -4,12 +4,12 @@
 
 Before completing this task, use:
 
-* .ai/project-context.md
-* .ai/project-instructions.md
-* .ai/coding-standards.md
-* .ai/style-guide.md
-* .ai/wordpress-best-practices.md
-* .ai/employer-review-checklist.md
+* project-context.md
+* project-instructions.md
+* coding-standards.md
+* style-guide.md
+* wordpress-best-practices.md
+* architecture.md
 
 Prioritize project standards over generic recommendations.
 
@@ -19,14 +19,8 @@ Prioritize project standards over generic recommendations.
 
 ## Context
 
-This is a professional portfolio project intended to demonstrate readiness for:
-
-* Junior Web Developer roles
-* WordPress Developer roles
-* Front-End Developer roles
-* Website Maintenance roles
-* Agency overflow work
-* Freelance web development work
+This is a WordPress project that should be understandable, maintainable,
+and easy to onboard for other developers.
 
 Documentation should help another developer quickly understand:
 
@@ -95,13 +89,13 @@ Check for:
 
 ---
 
-### Employer Readiness
+### Project Handoff Readiness
 
 Determine whether documentation would help:
 
-* A hiring manager
 * A WordPress agency
 * A freelance client
+* An in-house team
 * Another developer maintaining the project
 
 ---
@@ -130,7 +124,7 @@ Provide revised documentation where appropriate.
 
 ### 6. README Improvements
 
-Identify improvements that would make the project more employer-ready.
+Identify improvements that would make the project easier to use and maintain.
 
 ### 7. Architecture Documentation Improvements
 
@@ -143,13 +137,13 @@ Identify anything that should be documented about:
 * SCSS architecture
 * Build process
 
-### 8. Employer Impression
+### 8. Project Readiness
 
 Would the current documentation make this project appear:
 
 * Professional
 * Maintainable
-* Agency-ready
+* Production-ready
 
 Explain why.
 
@@ -176,7 +170,7 @@ Avoid:
 * Excessive documentation
 * Documentation that becomes difficult to maintain
 
-Focus on documentation that improves maintainability, onboarding, and employer perception.
+Focus on documentation that improves maintainability, onboarding, and handoff quality.
 
 ---
 

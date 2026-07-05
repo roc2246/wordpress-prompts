@@ -1,21 +1,21 @@
-# Layout & Employability Review Prompt
+# Layout & UX Review Prompt
 
 ## Required Project Context
 
 Before completing this task, read or use these project files if they are available in the workspace/context:
 
-- `.ai/project-context.md`
-- `.ai/project-instructions.md`
-- `.ai/coding-standards.md`
-- `.ai/style-guide.md`
-- `.ai/wordpress-best-practices.md`
-- `.ai/employer-review-checklist.md`
+- `project-context.md`
+- `project-instructions.md`
+- `coding-standards.md`
+- `style-guide.md`
+- `wordpress-best-practices.md`
+- `architecture.md`
 
 If your AI tool cannot automatically read files, paste or attach the relevant files before running this prompt.
 
 ## Universal Rules
 
-- Prioritize job readiness, maintainability, accessibility, responsive design, and WordPress best practices.
+- Prioritize maintainability, accessibility, responsive design, and WordPress best practices.
 - Avoid overengineering, unnecessary frameworks, and huge rewrites unless there is a clear reason.
 - Be direct and practical.
 - Recommend the highest-impact improvement first.
@@ -24,20 +24,11 @@ If your AI tool cannot automatically read files, paste or attach the relevant fi
 
 ## Role
 
-You are a senior front-end developer, WordPress developer, agency lead, and hiring manager reviewing a portfolio project.
+You are a senior front-end and WordPress developer reviewing a theme's layout quality.
 
 ## Goal
 
-Review the layout and visual design as if deciding whether this project helps the developer get interviews for:
-
-- Junior Web Developer
-- WordPress Developer
-- Front-End Developer
-- Website Maintenance Developer
-- Freelance Web Developer
-- Agency Overflow Developer
-
-Prioritize employability over artistic design.
+Review the layout and visual design for production quality, usability, and maintainability.
 
 ## Review Scope
 
@@ -72,35 +63,28 @@ Review all provided materials together:
 - Component consistency
 - Accessibility
 - Professional appearance
-- Missing employer-facing sections or functionality
+- Missing user-facing sections or functionality
 
 ## Return Format
 
-### 1. Overall Employability Score
+### 1. Overall Layout Quality Score
 
-Give a score from 1–10 and classify the project as one of:
+Give a score from 1-10 and classify the current layout maturity.
 
-- Tutorial Project
-- Student Project
-- Portfolio Project
-- Freelance Ready
-- Agency Ready
-- Junior Developer Ready
-
-### 2. What Looks Employer-Ready
+### 2. What Looks Production-Ready
 
 List the strongest parts.
 
 ### 3. What Looks Amateur or Incomplete
 
-Be direct. Explain why each issue hurts employability.
+Be direct. Explain why each issue hurts usability or maintainability.
 
 ### 4. Missing Layout Elements
 
 For each missing item include:
 
 - What is missing
-- Why employers care
+- Why it matters
 - Priority: High / Medium / Low
 
 ### 5. Professional Features Checklist
@@ -132,12 +116,6 @@ If only 2–3 hours were available, what single change would most improve percei
 
 Give the exact next three tasks in priority order.
 
-### 8. Final Verdict by Role
+### 8. Final Verdict
 
-For each role, answer Yes / Maybe / No and explain why:
-
-- Junior Web Developer
-- WordPress Developer
-- Website Maintenance Developer
-- Agency Overflow Developer
-- Freelance Web Developer
+Answer Yes / Maybe / No and explain whether the layout is ready for production use.

@@ -1,21 +1,21 @@
-# Employer Code Review Prompt
+# WordPress Theme Code Review Prompt
 
 ## Required Project Context
 
 Before completing this task, read or use these project files if they are available in the workspace/context:
 
-- `.ai/project-context.md`
-- `.ai/project-instructions.md`
-- `.ai/coding-standards.md`
-- `.ai/style-guide.md`
-- `.ai/wordpress-best-practices.md`
-- `.ai/employer-review-checklist.md`
+- `project-context.md`
+- `project-instructions.md`
+- `coding-standards.md`
+- `style-guide.md`
+- `wordpress-best-practices.md`
+- `architecture.md`
 
 If your AI tool cannot automatically read files, paste or attach the relevant files before running this prompt.
 
 ## Universal Rules
 
-- Prioritize job readiness, maintainability, accessibility, responsive design, and WordPress best practices.
+- Prioritize maintainability, accessibility, responsive design, and WordPress best practices.
 - Avoid overengineering, unnecessary frameworks, and huge rewrites unless there is a clear reason.
 - Be direct and practical.
 - Recommend the highest-impact improvement first.
@@ -24,7 +24,7 @@ If your AI tool cannot automatically read files, paste or attach the relevant fi
 
 ## Role
 
-You are an experienced WordPress developer reviewing this code as if interviewing or evaluating a junior developer for agency, freelance, maintenance, or overflow work.
+You are an experienced WordPress developer reviewing code for production quality and long-term maintainability.
 
 ## Review Scope
 
@@ -47,9 +47,9 @@ Review any provided PHP, SCSS, JavaScript, template, or WordPress theme files.
 
 ## Return Format
 
-### 1. Hiring Score
+### 1. Quality Score
 
-Give a score from 1–10 and explain whether this code feels junior-ready, portfolio-ready, or not ready yet.
+Give a score from 1-10 and explain the current quality level.
 
 ### 2. Strengths
 
@@ -57,7 +57,7 @@ What is already good?
 
 ### 3. Critical Issues
 
-Issues that should be fixed before showing this to employers.
+Issues that should be fixed before release.
 
 ### 4. Important Improvements
 

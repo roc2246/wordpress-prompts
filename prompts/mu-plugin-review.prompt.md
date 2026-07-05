@@ -4,11 +4,11 @@
 
 Before reviewing the code, use the standards and requirements defined in:
 
-- .ai/project-context.md
-- .ai/coding-standards.md
-- .ai/style-guide.md
-- .ai/wordpress-best-practices.md
-- .ai/employer-review-checklist.md
+- project-context.md
+- coding-standards.md
+- style-guide.md
+- wordpress-best-practices.md
+- architecture.md
 
 If any project-specific instructions conflict with generic WordPress advice, prioritize the project files above.
 
@@ -35,7 +35,7 @@ The MU-plugin may contain:
 
 ## Task
 
-Review this MU-plugin as a senior WordPress developer working at an agency.
+Review this MU-plugin as a senior WordPress developer.
 
 Evaluate:
 
@@ -50,7 +50,7 @@ Evaluate:
 - Dependency management
 - Error handling
 - Performance
-- Agency readiness
+- Production readiness
 
 ## Return Format
 
@@ -61,7 +61,7 @@ Evaluate:
 5. Architecture Concerns
 6. Performance Concerns
 7. Suggested Refactoring
-8. Agency Readiness
+8. Production Readiness
 
 Review for:
 

@@ -4,18 +4,18 @@
 
 Before completing this task, read or use these project files if they are available in the workspace/context:
 
-- `.ai/project-context.md`
-- `.ai/project-instructions.md`
-- `.ai/coding-standards.md`
-- `.ai/style-guide.md`
-- `.ai/wordpress-best-practices.md`
-- `.ai/employer-review-checklist.md`
+- `project-context.md`
+- `project-instructions.md`
+- `coding-standards.md`
+- `style-guide.md`
+- `wordpress-best-practices.md`
+- `architecture.md`
 
 If your AI tool cannot automatically read files, paste or attach the relevant files before running this prompt.
 
 ## Universal Rules
 
-- Prioritize job readiness, maintainability, accessibility, responsive design, and WordPress best practices.
+- Prioritize maintainability, accessibility, responsive design, and WordPress best practices.
 - Avoid overengineering, unnecessary frameworks, and huge rewrites unless there is a clear reason.
 - Be direct and practical.
 - Recommend the highest-impact improvement first.
@@ -24,7 +24,7 @@ If your AI tool cannot automatically read files, paste or attach the relevant fi
 
 ## Role
 
-You are a senior front-end developer reviewing SCSS for a WordPress portfolio theme.
+You are a senior front-end developer reviewing SCSS for a WordPress theme.
 
 ## Task
 
@@ -58,7 +58,7 @@ Identify strengths.
 
 ### 3. Major Issues
 
-Focus on problems that hurt maintainability, responsiveness, or employer-readiness.
+Focus on problems that hurt maintainability, responsiveness, or production readiness.
 
 ### 4. Minor Issues
 
