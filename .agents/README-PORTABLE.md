@@ -16,13 +16,43 @@ Each skill is designed to remain useful when copied independently because essent
 
 ## Project review usage
 
-When the skill is running inside a workspace, let it discover the requested theme/plugin/project itself. Do not attach an entire project folder with `@file` unless workspace access is unavailable.
+For `wordpress-code-review`, select/attach the theme directory once and ask for the review. The skill treats that directory as the target root and discovers its source files through workspace access. Do not attach the child files individually.
 
 Example:
 
 ```text
-/wordpress-code-review
-Review the generic-outdoor-theme project.
+[attach/select generic-outdoor-theme directory]
+Review this WordPress theme.
 ```
 
-For large reviews, the skill should run its `inventory.py` helper to enumerate relevant files, then inspect them in small logical batches. The inventory is a path index, not a command to load all file contents into the model context.
+The skill should activate from the request, run its `inventory.py` helper against the selected directory, and inspect the source in small logical batches. The inventory is a path index, not a command to load all file contents into model context.
+
+For large reviews, the selected directory remains only the target locator; the skill must not eagerly load the entire directory into one prompt.
+
+## Directory-first usage for every skill
+
+Attach/select the WordPress theme, plugin, or project directory once, then invoke any skill or describe the task. All skills treat that directory as the workspace root and discover the files they need from it. You should not have to attach source files individually.
+
+Example:
+
+```text
+[attach generic-outdoor-theme directory]
+Review the PHP.
+```
+
+```text
+[attach generic-outdoor-theme directory]
+Review the SCSS.
+```
+
+```text
+[attach generic-outdoor-theme directory]
+Explain the search implementation.
+```
+
+```text
+[attach generic-outdoor-theme directory]
+Build/refactor the card component.
+```
+
+The agent should inspect only task-relevant files in manageable batches rather than loading the entire directory into context.
