@@ -1,22 +1,18 @@
 ---
 name: wordpress-code-review
-description: Audit a WordPress theme or mixed custom WordPress codebase for production readiness, security, architecture, maintainability, accessibility, and framework conventions. Use for broad project/theme reviews; prefer narrower PHP, plugin, SCSS, or UX skills when the request is domain-specific.
+description: Review a WordPress theme or mixed custom WordPress codebase for production readiness, security, architecture, maintainability, and accessibility. Use for broad reviews; prefer narrower PHP, plugin, SCSS, or UX skills for domain-specific requests.
 metadata:
   author: riley-childs
-  version: "2.0"
+  version: "3.0"
 ---
 
 # WordPress Code Review
 
-Use `.agents/skills/_base/common-workflow.md` and `.agents/skills/_base/common-output.md`.
+Use `_base/common-workflow.md` and `_base/common-output.md`.
 
-## Workflow
-1. Inventory the narrowest requested project/theme root with `scripts/inventory.py`.
-2. Inspect entry points/config first, then source in logical batches.
-3. Load `references/theme-architecture.md` for theme/template ownership and organization questions.
-4. Load `references/security-accessibility.md` only when PHP/output/input or rendered interaction is in scope.
-5. For deep audits, use `references/exhaustive-review.md` as a coverage checklist.
-6. Route domain-specific findings to the narrower skill rather than duplicating its full checklist.
-
-## Output
-Give strengths, critical issues, important improvements, optional polish, and the single highest-value next action. Do not invent issues merely to fill categories.
+1. Run `scripts/inventory.py` on the requested custom-code root; inventory paths only.
+2. Inspect entry points and architecture first, then only relevant files in small batches.
+3. Load `references/theme-architecture.md` only for theme/template structure.
+4. Load `references/security-accessibility.md` only for trust boundaries or rendered interaction.
+5. Use `references/exhaustive-review.md` only when the user explicitly wants a full audit.
+6. Delegate domain-specific depth to the narrower skill instead of duplicating its checks.
