@@ -1,10 +1,7 @@
-# Common Output Format
+# Common Output
 
-This output guidance applies to all WordPress Agent Skills.
-
-- Put the highest-impact finding or action first.
-- Cite exact file paths and code areas.
-- Explain why each recommendation matters and its practical tradeoff.
-- Distinguish security-critical issues from maintainability and polish.
-- Avoid repeating generic standards that do not affect the current task.
-- If implementation changes code, include a concise Git commit message.
+- Lead with the highest-impact finding or action.
+- Cite exact paths/code areas when available.
+- Separate security/correctness issues from maintainability and polish.
+- Explain practical impact; avoid repeating generic standards.
+- When files are changed, report validation results and a concise Git commit message.

@@ -1,31 +1,21 @@
 ---
 name: wordpress-php-review
-description: Focused review of WordPress PHP and custom-theme implementation. Use for templates, functions.php, inc modules, custom post types/taxonomies, ACF integration, hooks, escaping/sanitization, enqueue logic, or PHP-specific WordPress best-practice audits. Works from an attached or selected project directory without requiring individual child-file attachments.
+description: Review WordPress PHP for templates, functions.php, inc modules, hooks, custom content types, ACF integration, enqueue logic, trust boundaries, and WordPress API usage. Use when PHP is the primary concern rather than a broad theme audit.
 metadata:
   author: riley-childs
-  version: "1.2"
+  version: "2.0"
 ---
 
-# Workflow
+# WordPress PHP Review
 
-See `.agents/skills/_base/common-workflow.md`.
+Use `.agents/skills/_base/common-workflow.md` and `.agents/skills/_base/common-output.md`.
 
-# Output
+## Workflow
+1. Inventory PHP with `scripts/inventory.py <root> --ext .php`.
+2. Inspect bootstrap/setup files first, then templates/modules by dependency or runtime flow.
+3. Load `references/php-wordpress.md` for API/architecture checks.
+4. Load `references/security-boundaries.md` when input, output, permissions, REST/AJAX, forms, or database writes are involved.
+5. Use `references/exhaustive-review.md` only for a full PHP audit.
 
-See `.agents/skills/_base/common-output.md`.
-
-# Directory-First Invocation
-
-This skill is designed to work from the **project directory alone**.
-
-- If exactly one WordPress theme/plugin/project directory is attached or selected, use it as the project root automatically.
-- Discover the files needed for this skill from that directory.
-- Do not ask the user to attach individual child files when workspace access to the directory is available.
-- Read only task-relevant files in small batches; do not load the entire directory into model context at once.
-- If the user explicitly names a narrower file, component, plugin, template, or subdirectory, use that narrower target while keeping the attached directory as the workspace root.
-
-# Deterministic Inventory
-
-For recursive or multi-file work, locate the requested target in the current workspace and run `scripts/inventory.py` against the narrowest relevant root. Do not ask the user to attach the entire theme/plugin/project with `@file` when workspace access is available.
-
-Use the inventory only as a deterministic path index and coverage checklist. Pass only task-relevant extensions, then inspect file contents selectively in small logical batches. Never bulk-load every inventoried file into the model context in one request.
+## Output
+Prioritize correctness/security first, then architecture, accessibility of generated markup, and maintainability. Suggest revised code only where it materially clarifies a fix.

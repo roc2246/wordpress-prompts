@@ -1,25 +1,20 @@
 ---
 name: wordpress-explain-code
-description: Explains selected WordPress/PHP/JavaScript/SCSS code in plain English, including data flow, hooks, template relationships, security/accessibility implications, and how it fits the project. Use for code walkthroughs, onboarding, learning, or “what does this do?” questions. Works from an attached or selected project directory without requiring individual child-file attachments.
+description: Explain selected WordPress PHP, JavaScript, SCSS, templates, hooks, or project flow in practical terms. Use for walkthroughs, onboarding, learning, or “what does this do?” questions; do not activate for a full code review.
 metadata:
   author: riley-childs
-  version: "1.2"
+  version: "2.0"
 ---
 
-# Workflow
+# Explain WordPress Code
 
-See `.agents/skills/_base/common-workflow.md`.
+Use `.agents/skills/_base/common-output.md`; this skill is read-only unless the user separately asks for changes.
 
-# Output
+## Workflow
+1. Start from the exact selected/named code. Read adjacent definitions/call sites only when needed to explain behavior accurately.
+2. Load `references/explanation-guide.md` only when a deeper walkthrough is requested.
+3. Explain WordPress concepts in context rather than reciting generic definitions.
+4. Mention security/accessibility/maintainability only when materially relevant to the code being explained.
 
-See `.agents/skills/_base/common-output.md`.
-
-# Directory-First Invocation
-
-This skill is designed to work from the **project directory alone**.
-
-- If exactly one WordPress theme/plugin/project directory is attached or selected, use it as the project root automatically.
-- Discover the files needed for this skill from that directory.
-- Do not ask the user to attach individual child files when workspace access to the directory is available.
-- Read only task-relevant files in small batches; do not load the entire directory into model context at once.
-- If the user explicitly names a narrower file, component, plugin, template, or subdirectory, use that narrower target while keeping the attached directory as the workspace root.
+## Output
+Give a plain-English summary, execution/data flow, important WordPress concepts, project relationship, and notable caveats. Keep depth proportional to the user's question.

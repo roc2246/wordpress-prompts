@@ -1,31 +1,21 @@
 ---
 name: wordpress-scss-review
-description: Reviews SCSS/CSS architecture in WordPress themes or plugins for mobile-first structure, specificity, tokens, reusable components, responsive behavior, accessibility, and maintainability. Use for styling audits, 7-1 architecture reviews, or SCSS refactoring proposals. Works from an attached or selected project directory without requiring individual child-file attachments.
+description: Review SCSS/CSS in a WordPress theme or plugin for architecture, Sass usage, specificity, tokens, responsive behavior, accessibility, reusable components, and maintainability. Use for styling audits or SCSS refactors, not general PHP/theme review.
 metadata:
   author: riley-childs
-  version: "1.2"
+  version: "2.0"
 ---
 
-# Workflow
+# WordPress SCSS Review
 
-See `.agents/skills/_base/common-workflow.md`.
+Use `.agents/skills/_base/common-workflow.md` and `.agents/skills/_base/common-output.md`.
 
-# Output
+## Workflow
+1. Inventory styling source with `scripts/inventory.py <root> --ext .scss --ext .css`.
+2. Inspect entrypoints/partials structure before individual components.
+3. Load `references/architecture-and-sass.md` for organization/reuse.
+4. Load `references/responsive-accessibility.md` when layout/interactions are relevant.
+5. Use `references/exhaustive-review.md` only for a full styling audit.
 
-See `.agents/skills/_base/common-output.md`.
-
-# Directory-First Invocation
-
-This skill is designed to work from the **project directory alone**.
-
-- If exactly one WordPress theme/plugin/project directory is attached or selected, use it as the project root automatically.
-- Discover the files needed for this skill from that directory.
-- Do not ask the user to attach individual child files when workspace access to the directory is available.
-- Read only task-relevant files in small batches; do not load the entire directory into model context at once.
-- If the user explicitly names a narrower file, component, plugin, template, or subdirectory, use that narrower target while keeping the attached directory as the workspace root.
-
-# Deterministic Inventory
-
-For recursive or multi-file work, locate the requested target in the current workspace and run `scripts/inventory.py` against the narrowest relevant root. Do not ask the user to attach the entire theme/plugin/project with `@file` when workspace access is available.
-
-Use the inventory only as a deterministic path index and coverage checklist. Pass only task-relevant extensions, then inspect file contents selectively in small logical batches. Never bulk-load every inventoried file into the model context in one request.
+## Output
+Prioritize maintainability and actual cascade problems over stylistic preferences. Show revised SCSS only for high-impact fixes.

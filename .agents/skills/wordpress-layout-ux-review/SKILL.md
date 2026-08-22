@@ -1,25 +1,20 @@
 ---
 name: wordpress-layout-ux-review
-description: Reviews WordPress theme layout and UX for visual hierarchy, responsive behavior, accessibility, consistency, client-readiness, and professional presentation. Use for screenshot/layout audits, portfolio/client-readiness reviews, or frontend UX polish. Works from an attached or selected project directory without requiring individual child-file attachments.
+description: Review a WordPress theme frontend for visual hierarchy, responsive layout, interaction UX, accessibility, consistency, and client/portfolio readiness. Use for screenshots or rendered frontend UX/layout audits rather than code architecture reviews.
 metadata:
   author: riley-childs
-  version: "1.2"
+  version: "2.0"
 ---
 
-# Workflow
+# WordPress Layout and UX Review
 
-See `.agents/skills/_base/common-workflow.md`.
+Use `.agents/skills/_base/common-output.md`.
 
-# Output
+## Workflow
+1. Evaluate the rendered page/screenshot first. Inspect HTML/SCSS/JS only when needed to diagnose or implement a finding.
+2. Load `references/ux-accessibility.md` for a deep audit.
+3. Separate objective usability/accessibility defects from subjective visual preferences.
+4. Prioritize changes with clear user/client impact.
 
-See `.agents/skills/_base/common-output.md`.
-
-# Directory-First Invocation
-
-This skill is designed to work from the **project directory alone**.
-
-- If exactly one WordPress theme/plugin/project directory is attached or selected, use it as the project root automatically.
-- Discover the files needed for this skill from that directory.
-- Do not ask the user to attach individual child files when workspace access to the directory is available.
-- Read only task-relevant files in small batches; do not load the entire directory into model context at once.
-- If the user explicitly names a narrower file, component, plugin, template, or subdirectory, use that narrower target while keeping the attached directory as the workspace root.
+## Output
+Cover strengths, critical usability/accessibility issues, responsive/layout issues, visual consistency/polish, and the highest-impact next change. Avoid recommending redesign for its own sake.
