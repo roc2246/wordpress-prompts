@@ -39,6 +39,24 @@ Before generating any SEO audit, the agent must complete a real source inspectio
 
 Do not produce a report based only on a directory listing or a filename inventory. The skill may only report confirmed findings after inspecting the relevant source files.
 
+## Mandatory recursive source inspection
+
+The skill must recursively traverse the user-specified project, folder, or current workspace and inspect the actual contents of all SEO-relevant source files.
+
+1. Enumerate all nested directories and files within the audit target.
+2. Identify SEO-relevant source files at every directory level.
+3. Open and read the actual contents of those files.
+4. Follow referenced templates, includes, imports, hooks, functions, components, and configuration files.
+5. Search the entire audit target for SEO-related markup and implementation patterns.
+6. Continue until all reasonably relevant source files have been inspected.
+7. A recursive filename or directory inventory does not count as a source-code audit. The skill must not generate its final report from filenames alone.
+
+The skill may skip binary image, font, video, dependency, generated build, test-result, cache, and minified vendor files where those are clearly not source-controlled behavior. However, it must inspect any source file that may control document titles, metadata, canonical URLs, robots directives, structured data, headings, semantic structure, internal links, navigation, images, content rendering, routing, redirects, indexability, asset loading, or performance-related behavior.
+
+Before producing the report, the skill must confirm that it opened and read multiple relevant source files. Every confirmed finding must cite an inspected file and the relevant code evidence.
+
+If workspace file-reading tools are unavailable or fail, the skill must report that limitation and stop. It must not substitute a directory inventory or generic checklist for an actual source-code audit.
+
 ## Evidence rules
 
 1. Start by listing available evidence, requested scope, crawl/device/locale limits, and unavailable checks.
@@ -78,7 +96,7 @@ If a file cannot be opened or read, do the following:
 3. Continue auditing all other readable files.
 4. Do not abandon the entire audit because one file is unavailable.
 
-If no workspace file-reading tools are available in the current Copilot session, stop immediately and clearly state:
+If workspace file-reading tools are unavailable or fail in the current Copilot session, stop immediately and clearly state:
 
 > The skill was loaded, but this Copilot session does not provide workspace file-reading tools. No source-code audit was performed.
 
@@ -96,8 +114,6 @@ Before writing a completed report, verify all of the following:
 - Findings are backed by inspected source code rather than filenames or directory inventory.
 
 If these conditions are not satisfied, do not produce a completed SEO audit.
-
-## Severity and effort
 
 ## Severity and effort
 
