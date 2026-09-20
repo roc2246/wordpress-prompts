@@ -4,38 +4,46 @@ Use this structure for a complete audit. Replace bracketed text and remove secti
 
 ## 1. Executive summary
 
-- Scope reviewed: [pages, URL set, templates, devices, locales, and evidence layers]
+- Scope reviewed: [workspace root, recursive folder scope, file classes, and local artifacts]
 - Main strengths: [brief list]
 - Highest-impact confirmed risks: [brief list]
 - Main uncertainty or missing evidence: [brief list]
 - Recommended first action: [one concrete next step]
 
-## 2. Overall SEO health assessment
+## 2. Project and evidence reviewed
 
-State a concise assessment grounded in the scope. Do not use a numeric score unless the scoring method, evidence coverage, and limitations are defined. Explain whether the assessment is page-specific, sample-based, or site-wide.
+- Technology identified from source: [technology and evidence, or unknown]
+- Files and directories reviewed: [inventory summary]
+- Local reports/artifacts reviewed: [list or none]
+- Explicit exclusions: [dependencies, generated output, unrelated files, or none]
+- Evidence limitations: [runtime behavior, deployment, live-site checks, or other gaps]
 
-## 3. Confirmed findings
+## 3. Confirmed SEO issues
 
 | ID | Category | Severity | Confidence | Affected scope | Evidence | Effort |
 | --- | --- | --- | --- | --- | --- | --- |
-| SEO-001 | [technical/on-page/semantic/performance/etc.] | [Critical/High/Medium/Low/Informational] | [High/Medium/Low] | [URL/file/element/pattern] | [direct observation] | [Quick fix/Moderate effort/Significant effort] |
+| SEO-001 | [technical/on-page/semantic/performance/etc.] | [Critical/High/Medium/Low/Informational] | [High/Medium/Low] | [workspace file and code location/pattern] | [direct source evidence] | [Quick fix/Moderate effort/Significant effort] |
 
 For each ID, explain:
 
 - Why it matters.
 - Technology-neutral recommended solution.
 - Technology-specific implementation notes only when the technology is confirmed.
-- How to verify the fix and what result would disconfirm the finding.
+- Offline verification method and what result would disconfirm the finding.
 
-## 4. Potential issues requiring verification
+## 4. Potential risks
 
-Use the same fields as confirmed findings, but state the missing evidence and the exact check needed before implementation. Do not present these as defects.
+Use the same fields as confirmed findings, but state the missing source or runtime evidence. Do not present these as confirmed defects.
 
-## 5. Positive practices already present
+## 5. Items requiring live-site verification
 
-List observed strengths with evidence and scope. Avoid implying that a positive practice guarantees rankings or complete compliance.
+List checks that cannot be performed from the workspace, such as deployed status codes, redirects, response headers, current robots/sitemap delivery, indexing state, external rendering, or current field performance. Do not perform these checks.
 
-## 6. Prioritized recommendations
+## 6. Positive SEO practices already present
+
+List observed strengths with workspace evidence and scope. Avoid implying that a positive practice guarantees rankings or complete compliance.
+
+## 7. Prioritized recommendations
 
 | Priority | Finding IDs | Action | Impact rationale | Confidence | Affected pages | Effort | Dependency |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -43,22 +51,21 @@ List observed strengths with evidence and scope. Avoid implying that a positive 
 
 Prioritize using likely impact, confidence, effort, and affected-page count. Explicitly note when a lower-severity quick fix should precede a higher-severity change because it is a dependency or an easy verification win.
 
-## 7. Suggested implementation order
+## 8. Suggested implementation order
 
-1. Resolve access, delivery, status-code, redirect, and indexability blockers.
-2. Establish canonical URL, sitemap, internal discovery, and rendering correctness.
-3. Fix template-level metadata, document structure, content access, and repeated issues.
-4. Address mobile, performance, structured data, and internationalization issues according to evidence and scope.
-5. Re-crawl, re-render, and monitor representative pages after deployment.
+1. Resolve confirmed source-level metadata, document structure, routing, and discoverability issues.
+2. Fix repeated template/component and configuration patterns affecting multiple page types.
+3. Address content, structured data, mobile, performance, internationalization, and accessibility-related issues supported by workspace evidence.
+4. Separately plan deployment and live-site verification for runtime-only risks.
 
 Adjust this order when dependencies or business priorities require it, and explain the change.
 
-## 8. Verification plan
+## Verification details
 
 For every recommendation specify:
 
-- Test input and representative URLs.
-- Layer tested: source, rendered DOM, live response, crawl, performance, or manual review.
+- Test input and representative files or local artifacts.
+- Layer tested: source, local generated output, supplied rendered artifact, supplied report, or manual review.
 - Expected result.
-- Regression checks for important variants, devices, locales, and error states.
-- Recheck timing for changes whose external processing is not immediate.
+- Regression checks for important templates, routes, locales, devices, and error states where represented locally.
+- Separate live-site verification required after deployment, without attempting it during this audit.

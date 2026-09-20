@@ -1,18 +1,18 @@
 # SEO Evidence Checklist
 
-Use only the sections applicable to the evidence and scope. Record `observed`, `not observed`, `not applicable`, or `not verified`; absence of evidence is not evidence of absence.
+Use only the sections applicable to the workspace evidence and scope. Inspect source files, local configuration, content, assets, generated output, and supplied offline reports only. Record `observed`, `not observed`, `not applicable`, or `not verified`; absence of evidence is not evidence of absence.
 
 ## Delivery, crawlability, and indexability
 
 - URL variants: HTTP/HTTPS, host variants, trailing slash, case, parameters, fragments, subpaths, and duplicate entry points.
-- HTTP status codes for important, redirected, missing, unauthorized, and error URLs.
-- Redirect destinations, redirect count, loops, temporary/permanent intent, and chains.
+- HTTP status-code handling visible in source/configuration, or status codes documented in supplied local reports.
+- Redirect destinations, redirect count, loops, temporary/permanent intent, and chains visible in source/configuration or supplied reports.
 - `robots.txt` location, syntax, user-agent coverage, disallow/allow scope, sitemap references, and conflicts with page-level directives.
 - XML sitemap availability, valid URLs, canonical alignment, status codes, last-modified accuracy, segmentation, and discoverability.
 - Page-level robots directives, response headers, canonical URL, and conflicts between them.
 - Internal links to important pages, crawlable hrefs, link depth, orphan candidates, navigation states, and pagination paths.
 - Duplicate URL patterns, faceted/filter states, session or tracking parameters, and near-duplicate templates.
-- HTTPS certificate/delivery, insecure resources, HTTP redirects, and canonical protocol/host.
+- HTTPS configuration, insecure resources, HTTP redirects, and canonical protocol/host handling visible in source/configuration or supplied reports.
 
 ## Document, metadata, and content
 
@@ -28,9 +28,9 @@ Use only the sections applicable to the evidence and scope. Record `observed`, `
 
 ## Rendering, mobile, and performance
 
-- Content, links, metadata, structured data, and navigation available in initial HTML versus after JavaScript execution.
+- Content, links, metadata, structured data, and navigation emitted in local source/generated HTML versus dependent on JavaScript; use supplied rendered HTML only as an artifact.
 - Rendering failures, hydration/route transitions, blocked resources, infinite scroll, lazy content, and interaction-only discovery.
-- Mobile viewport, responsive layout, tap targets, horizontal overflow, font/layout shifts, and parity with desktop content.
+- Mobile viewport configuration, responsive layout code, and locally observable responsive patterns; treat tap targets, overflow, shifts, and desktop parity as potential risks unless supplied evidence confirms them.
 - Available Core Web Vitals or lab/field performance evidence; identify metric, device, sample, date, and URL scope.
 - Large or blocking resources, third-party dependencies, caching, compression, image sizing, and layout stability when evidence exists.
 
@@ -43,4 +43,4 @@ Use only the sections applicable to the evidence and scope. Record `observed`, `
 
 ## Evidence quality
 
-For each check, preserve the smallest useful proof: URL and response, source excerpt, rendered selector, crawl row, screenshot description, performance record, or repeated count. Note timestamp and test conditions when behavior may vary.
+For each check, preserve the smallest useful proof: workspace-relative file and code location, supplied URL/response record, source excerpt, local rendered selector, crawl row, screenshot description, performance record, or repeated count. Note artifact timestamp and conditions when supplied evidence may vary. Do not obtain new evidence from the network.

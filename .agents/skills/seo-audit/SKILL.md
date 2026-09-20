@@ -1,6 +1,6 @@
 ---
 name: seo-audit
-description: Audit a website or web project for technical SEO, on-page SEO, semantic HTML, accessibility-related SEO, performance, crawlability, and indexability issues. Use for static HTML, server-rendered sites, JavaScript applications, CMS and e-commerce sites, custom frameworks, source-code reviews, rendered-page reviews, live-site audits, and SEO reports.
+description: Perform a source-code-only SEO audit of the current workspace, including templates, configuration, content, assets, and local reports. Use for static HTML, server-rendered sites, JavaScript applications, CMS and e-commerce sites, custom frameworks, and technology-neutral SEO reports.
 metadata:
   author: riley-childs
   version: "1.0"
@@ -8,49 +8,45 @@ metadata:
 
 # SEO Audit
 
-Produce an evidence-based, technology-neutral SEO audit for a single page or an entire website. Review the rendered experience when available, distinguish direct SEO defects from indirect accessibility or usability concerns, and avoid inferring runtime behavior from source code alone.
+Produce an evidence-based, technology-neutral SEO audit of the current workspace. Review source code, templates, configuration, content, assets, and locally available reports without modifying files. Distinguish confirmed source-code issues from potential runtime risks and live-site verification requirements.
 
 ## Activation and inputs
 
-Use this skill when the request asks to audit, review, diagnose, or improve SEO, search visibility, crawlability, indexability, metadata, structured data, or search-oriented HTML.
+Use this skill when the request asks to audit, review, diagnose, or improve SEO, search visibility, crawlability, indexability, metadata, structured data, or search-oriented source code in the current workspace.
 
 Accept any combination of:
 
-- Source files, templates, build output, configuration, headers, and deployment artifacts.
-- A theme or project folder named in the prompt. Treat the folder as a recursive scope: inventory all nested files and directories before selecting files for detailed review.
-- One or more URLs, rendered HTML, browser observations, crawl exports, server logs, status-code samples, or performance reports.
-- Screenshots as supporting evidence only; they cannot establish source markup, HTTP behavior, or crawler access.
+- All files and directories available in the current workspace, including source files, templates, build output, configuration, headers, deployment artifacts, content, assets, and local reports.
+- A theme or project folder named in the prompt. Treat it as a recursive scope: inventory all nested files and directories before selecting files for detailed review.
+- Supplied offline evidence stored in or provided with the workspace, such as rendered HTML, crawl exports, Lighthouse reports, Search Console exports, server logs, status-code samples, performance reports, or screenshots.
 - A stated page scope, URL scope, device scope, locale scope, or business/search-intent context.
 
 If scope is not stated, define the observed scope before auditing. Do not require a specific CMS, framework, language, hosting provider, analytics product, or SEO plugin.
 
-Do not attempt to browse or crawl a live website unless browsing tools are available. When browsing is unavailable, analyze the repository and any supplied crawl exports, Lighthouse reports, Search Console exports, rendered HTML, screenshots, or other evidence. Clearly distinguish what can be confirmed from source code from what requires live-site verification.
+This is a source-code-only audit. Inspect only the current workspace and supplied local/offline evidence. Do not use browser tools, open or inspect a live website, require internet or network access, crawl a deployed website, invoke `/tests` or unrelated slash commands, generate tests, or modify files unless the user explicitly requests implementation. Do not refuse the audit because browser access is unavailable.
 
 ## Evidence rules
 
 1. Start by listing available evidence, requested scope, crawl/device/locale limits, and unavailable checks.
 2. Separate `Confirmed` findings from `Potential` issues requiring verification.
-3. Cite the exact URL, file, selector, element, response, report row, or repeated pattern supporting each finding.
-4. Treat generated or client-side content as unknown until rendered output, runtime behavior, or an equivalent artifact has been inspected.
-5. Do not claim that a page is absent, blocked, duplicated, fast, accessible, indexed, or canonicalized without evidence appropriate to that claim.
+3. Cite the exact workspace-relative file and code location, report row, selector, element, or repeated pattern supporting each finding whenever possible.
+4. Treat generated or client-side content as unknown until its source, local generated output, or supplied rendered artifact has been inspected.
+5. Do not claim that a page is absent, blocked, duplicated, fast, accessible, indexed, or canonicalized without workspace or supplied evidence appropriate to that claim.
 6. When evidence conflicts, record the conflict, prefer the more direct observation, and state what would resolve it.
 7. Never promise rankings, traffic, indexing, or rich-result eligibility. Describe likely impact and uncertainty instead.
 
 ## Workflow
 
-1. Establish scope and evidence. Identify whether the audit is single-page, site-wide, or a recursively supplied folder; identify source-level or rendered/live evidence and which devices, locales, URLs, and authenticated states are represented.
-2. If a folder is supplied, recursively inventory its complete contents before detailed review. Record the root, nested paths, file types, templates/components, styles, scripts, assets, configuration, routes, content, tests, generated output, dependencies, and other relevant patterns. Do not stop at the root or assume a fixed directory layout.
-3. Classify the inventory. Inspect every relevant nested source and configuration file that can affect rendered HTML, URLs, metadata, links, content, headers, routing, structured data, rendering, or performance. Exclude vendor/dependency caches and generated artifacts from primary conclusions only when they are clearly identified; record exclusions and inspect them when they are the deployed output or affect delivery.
-4. Check whether browsing tools are available before considering a live URL. If they are unavailable, do not browse or crawl; proceed with repository evidence and supplied crawl exports, Lighthouse or performance reports, Search Console exports, rendered HTML, screenshots, and other artifacts.
-5. Identify the delivery model only after inspecting evidence. Record relevant technology facts, but keep the recommendations portable.
-6. Inspect crawlability and indexability: status codes, redirects and chains, robots directives, XML sitemaps, canonical URLs, duplicate URL variants, pagination, HTTPS/mixed content, and internal-link discovery.
-7. Inspect rendered and source document structure: title, description, headings, main content, landmarks, links, images, forms, URLs, Open Graph/social metadata, and structured data.
-8. Evaluate content quality and intent: topic alignment, usefulness, depth, duplication, thin or empty states, template repetition, and whether important content depends on rendering or interaction.
-9. Evaluate mobile compatibility, JavaScript rendering risks, internationalization and `hreflang`, Core Web Vitals or available performance evidence, and resource behavior that could affect crawling or user experience.
-10. Record positive practices as well as defects. Avoid turning valid variations into findings without a user, crawler, or maintainability consequence.
-11. Classify every finding by severity, confidence, affected scope, and effort. Prioritize using likely SEO impact, confidence, implementation effort, and number of affected pages.
-12. Recommend a technology-neutral solution first. Add implementation-specific examples only when the project technology has been positively identified.
-13. Provide verification steps that can falsify the finding or confirm the fix, then order the work by dependencies and expected value.
+1. Establish the workspace scope and available evidence. Record the workspace root, supplied folder scope, local reports, and important unavailable runtime evidence.
+2. Recursively inventory the current workspace before detailed review. Record nested paths, file types, templates/components, styles, scripts, assets, configuration, routes, content, reports, generated output, dependencies, and relevant patterns. Do not stop at the root or assume a fixed directory layout.
+3. Identify the actual technology only from workspace evidence. Record framework, CMS, language, templating, build, routing, or deployment facts only when supported by files; keep recommendations technology-neutral until then.
+4. Locate files responsible for document structure, metadata, routing, content rendering, configuration, headers, redirects, asset loading, and SEO integrations. Search systematically for all applicable implementations before concluding that functionality is absent.
+5. Audit source-code coverage: titles, descriptions, canonical links, robots directives, robots.txt, XML sitemaps, headings, semantic HTML, links/navigation, URL generation, image alternatives/dimensions/loading, structured data, Open Graph/social metadata, language and `hreflang`, viewport, pagination, redirects/status handling visible in code, duplicate-content risks, JavaScript dependencies, performance patterns, and accessibility issues affecting discoverability or usability.
+6. Evaluate supplied local reports and rendered artifacts as evidence, clearly labeling them as reports/artifacts rather than independently verified runtime behavior.
+7. Record positive practices as well as defects. Avoid turning valid variations into findings without a user, crawler, accessibility, usability, or maintainability consequence.
+8. Classify every finding as a confirmed source-code issue, potential runtime risk, or live-site verification required. Add severity, confidence, affected scope, and effort.
+9. Recommend a technology-neutral solution first. Add technology-specific implementation guidance only after the project technology is positively identified.
+10. Provide offline verification steps that can falsify the finding or confirm the source change, and list live-site checks separately without attempting them.
 
 Load `references/evidence-checklist.md` for the detailed inspection checklist. Load `references/report-template.md` when producing the full report or when consistent finding fields are needed.
 
@@ -68,30 +64,30 @@ Use one effort estimate: `Quick fix`, `Moderate effort`, or `Significant effort`
 
 ## Single page versus site audit
 
-For a single page, inspect the complete document and its immediate discovery context, including representative inbound links, URL variants, response behavior, and relevant templates or components.
+For a single page, inspect all workspace files that can generate or affect it, including layouts, partials, components, routing, content, configuration, assets, and relevant local reports.
 
-For a supplied theme folder, recursively cover the complete folder tree. Trace findings from nested templates/components through their callers or shared layouts where possible, identify repeated patterns and affected page types, and distinguish authored source from generated/deployed output. Report the inventory boundary, excluded paths, sampled files, and any uninspected runtime behavior.
+For a supplied theme folder, recursively cover the complete folder tree. Trace findings from nested templates/components through their callers or shared layouts where possible, identify repeated patterns and affected page types, and distinguish authored source from generated output. Report the inventory boundary, excluded paths, reviewed files, and unverified runtime behavior.
 
-For a site audit, sample deliberately: key templates, page types, locales, device states, authenticated/public states, pagination states, error pages, and representative products or content. Report the sample and do not generalize to all pages unless the evidence supports a repeated pattern. When a crawl or inventory exists, quantify affected URLs and distinguish sampled findings from site-wide findings.
+For a workspace-wide audit, review all relevant files recursively and report exclusions. Use local reports or generated artifacts to quantify affected URLs when available, but do not generalize beyond the evidence.
 
 ## Source versus rendered/live review
 
-Source review can establish authored patterns, configuration, templates, and possible generated output. Rendered review can establish the effective DOM, visible content, client-side links, metadata after scripts run, and interaction-dependent content. Live review can additionally establish response behavior, redirects, headers, robots access, sitemap availability, and resource loading. State which layer supports each conclusion and label unobserved layers as verification gaps.
+Source review can establish authored patterns, configuration, templates, and possible generated output. Supplied rendered HTML or reports can establish only what those artifacts record. State which layer supports each conclusion and label unobserved runtime layers as verification gaps.
 
-When browsing tools are unavailable, source and supplied artifacts can confirm authored or reported behavior only. Treat live response status, redirect behavior, current robots and sitemap availability, deployed headers, indexing state, external rendering, and current field performance as requiring live-site or equivalent external verification.
+Treat live response status, redirect behavior, current robots and sitemap availability, deployed headers, indexing state, external rendering, and current field performance as requiring live-site verification. List these as follow-up checks only; never perform them in this skill.
 
 ## Standard report
 
 Return, in this order:
 
 1. Executive summary.
-2. Overall SEO health assessment with scope and limitations.
-3. Confirmed findings.
-4. Potential issues requiring verification.
-5. Positive practices already present.
-6. Prioritized recommendations.
-7. Suggested implementation order.
-8. Verification steps for every recommended change.
+2. Project and evidence reviewed.
+3. Confirmed SEO issues.
+4. Potential risks.
+5. Items requiring live-site verification.
+6. Positive SEO practices already present.
+7. Prioritized recommendations.
+8. Suggested implementation order.
 
 Every finding and recommendation should include category, severity, confidence level, evidence, affected page/file/element/pattern, why it matters, recommended solution, estimated effort, and verification method. Use tables for scanability, but explain non-obvious consequences in plain language.
 
@@ -102,3 +98,5 @@ Every finding and recommendation should include category, severity, confidence l
 - Do not invent keywords, alt text, search intent, business priorities, or page importance; mark the missing context and request it in verification steps.
 - Do not recommend hiding content, misleading metadata, manipulative links, doorway pages, or other tactics intended to deceive users or crawlers.
 - Keep accessibility and usability findings explicitly labeled as indirect SEO impact unless there is a direct search-related consequence.
+- Do not modify workspace files, invoke `/tests`, run unrelated slash commands, or generate tests unless the user explicitly requests implementation or tests.
+- Do not use browser tools, network access, live URLs, or deployed-site crawling for this audit.
