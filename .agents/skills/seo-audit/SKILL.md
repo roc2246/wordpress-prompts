@@ -17,6 +17,7 @@ Use this skill when the request asks to audit, review, diagnose, or improve SEO,
 Accept any combination of:
 
 - Source files, templates, build output, configuration, headers, and deployment artifacts.
+- A theme or project folder named in the prompt. Treat the folder as a recursive scope: inventory all nested files and directories before selecting files for detailed review.
 - One or more URLs, rendered HTML, browser observations, crawl exports, server logs, status-code samples, or performance reports.
 - Screenshots as supporting evidence only; they cannot establish source markup, HTTP behavior, or crawler access.
 - A stated page scope, URL scope, device scope, locale scope, or business/search-intent context.
@@ -35,16 +36,18 @@ If scope is not stated, define the observed scope before auditing. Do not requir
 
 ## Workflow
 
-1. Establish scope and evidence. Identify whether the audit is single-page or site-wide, source-level or rendered/live, and which devices, locales, URLs, and authenticated states are represented.
-2. Identify the delivery model only after inspecting evidence. Record relevant technology facts, but keep the recommendations portable.
-3. Inspect crawlability and indexability: status codes, redirects and chains, robots directives, XML sitemaps, canonical URLs, duplicate URL variants, pagination, HTTPS/mixed content, and internal-link discovery.
-4. Inspect rendered and source document structure: title, description, headings, main content, landmarks, links, images, forms, URLs, Open Graph/social metadata, and structured data.
-5. Evaluate content quality and intent: topic alignment, usefulness, depth, duplication, thin or empty states, template repetition, and whether important content depends on rendering or interaction.
-6. Evaluate mobile compatibility, JavaScript rendering risks, internationalization and `hreflang`, Core Web Vitals or available performance evidence, and resource behavior that could affect crawling or user experience.
-7. Record positive practices as well as defects. Avoid turning valid variations into findings without a user, crawler, or maintainability consequence.
-8. Classify every finding by severity, confidence, affected scope, and effort. Prioritize using likely SEO impact, confidence, implementation effort, and number of affected pages.
-9. Recommend a technology-neutral solution first. Add implementation-specific examples only when the project technology has been positively identified.
-10. Provide verification steps that can falsify the finding or confirm the fix, then order the work by dependencies and expected value.
+1. Establish scope and evidence. Identify whether the audit is single-page, site-wide, or a recursively supplied folder; identify source-level or rendered/live evidence and which devices, locales, URLs, and authenticated states are represented.
+2. If a folder is supplied, recursively inventory its complete contents before detailed review. Record the root, nested paths, file types, templates/components, styles, scripts, assets, configuration, routes, content, tests, generated output, dependencies, and other relevant patterns. Do not stop at the root or assume a fixed directory layout.
+3. Classify the inventory. Inspect every relevant nested source and configuration file that can affect rendered HTML, URLs, metadata, links, content, headers, routing, structured data, rendering, or performance. Exclude vendor/dependency caches and generated artifacts from primary conclusions only when they are clearly identified; record exclusions and inspect them when they are the deployed output or affect delivery.
+4. Identify the delivery model only after inspecting evidence. Record relevant technology facts, but keep the recommendations portable.
+5. Inspect crawlability and indexability: status codes, redirects and chains, robots directives, XML sitemaps, canonical URLs, duplicate URL variants, pagination, HTTPS/mixed content, and internal-link discovery.
+6. Inspect rendered and source document structure: title, description, headings, main content, landmarks, links, images, forms, URLs, Open Graph/social metadata, and structured data.
+7. Evaluate content quality and intent: topic alignment, usefulness, depth, duplication, thin or empty states, template repetition, and whether important content depends on rendering or interaction.
+8. Evaluate mobile compatibility, JavaScript rendering risks, internationalization and `hreflang`, Core Web Vitals or available performance evidence, and resource behavior that could affect crawling or user experience.
+9. Record positive practices as well as defects. Avoid turning valid variations into findings without a user, crawler, or maintainability consequence.
+10. Classify every finding by severity, confidence, affected scope, and effort. Prioritize using likely SEO impact, confidence, implementation effort, and number of affected pages.
+11. Recommend a technology-neutral solution first. Add implementation-specific examples only when the project technology has been positively identified.
+12. Provide verification steps that can falsify the finding or confirm the fix, then order the work by dependencies and expected value.
 
 Load `references/evidence-checklist.md` for the detailed inspection checklist. Load `references/report-template.md` when producing the full report or when consistent finding fields are needed.
 
@@ -63,6 +66,8 @@ Use one effort estimate: `Quick fix`, `Moderate effort`, or `Significant effort`
 ## Single page versus site audit
 
 For a single page, inspect the complete document and its immediate discovery context, including representative inbound links, URL variants, response behavior, and relevant templates or components.
+
+For a supplied theme folder, recursively cover the complete folder tree. Trace findings from nested templates/components through their callers or shared layouts where possible, identify repeated patterns and affected page types, and distinguish authored source from generated/deployed output. Report the inventory boundary, excluded paths, sampled files, and any uninspected runtime behavior.
 
 For a site audit, sample deliberately: key templates, page types, locales, device states, authenticated/public states, pagination states, error pages, and representative products or content. Report the sample and do not generalize to all pages unless the evidence supports a repeated pattern. When a crawl or inventory exists, quantify affected URLs and distinguish sampled findings from site-wide findings.
 
