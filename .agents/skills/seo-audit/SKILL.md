@@ -24,6 +24,8 @@ Accept any combination of:
 
 If scope is not stated, define the observed scope before auditing. Do not require a specific CMS, framework, language, hosting provider, analytics product, or SEO plugin.
 
+Do not attempt to browse or crawl a live website unless browsing tools are available. When browsing is unavailable, analyze the repository and any supplied crawl exports, Lighthouse reports, Search Console exports, rendered HTML, screenshots, or other evidence. Clearly distinguish what can be confirmed from source code from what requires live-site verification.
+
 ## Evidence rules
 
 1. Start by listing available evidence, requested scope, crawl/device/locale limits, and unavailable checks.
@@ -39,15 +41,16 @@ If scope is not stated, define the observed scope before auditing. Do not requir
 1. Establish scope and evidence. Identify whether the audit is single-page, site-wide, or a recursively supplied folder; identify source-level or rendered/live evidence and which devices, locales, URLs, and authenticated states are represented.
 2. If a folder is supplied, recursively inventory its complete contents before detailed review. Record the root, nested paths, file types, templates/components, styles, scripts, assets, configuration, routes, content, tests, generated output, dependencies, and other relevant patterns. Do not stop at the root or assume a fixed directory layout.
 3. Classify the inventory. Inspect every relevant nested source and configuration file that can affect rendered HTML, URLs, metadata, links, content, headers, routing, structured data, rendering, or performance. Exclude vendor/dependency caches and generated artifacts from primary conclusions only when they are clearly identified; record exclusions and inspect them when they are the deployed output or affect delivery.
-4. Identify the delivery model only after inspecting evidence. Record relevant technology facts, but keep the recommendations portable.
-5. Inspect crawlability and indexability: status codes, redirects and chains, robots directives, XML sitemaps, canonical URLs, duplicate URL variants, pagination, HTTPS/mixed content, and internal-link discovery.
-6. Inspect rendered and source document structure: title, description, headings, main content, landmarks, links, images, forms, URLs, Open Graph/social metadata, and structured data.
-7. Evaluate content quality and intent: topic alignment, usefulness, depth, duplication, thin or empty states, template repetition, and whether important content depends on rendering or interaction.
-8. Evaluate mobile compatibility, JavaScript rendering risks, internationalization and `hreflang`, Core Web Vitals or available performance evidence, and resource behavior that could affect crawling or user experience.
-9. Record positive practices as well as defects. Avoid turning valid variations into findings without a user, crawler, or maintainability consequence.
-10. Classify every finding by severity, confidence, affected scope, and effort. Prioritize using likely SEO impact, confidence, implementation effort, and number of affected pages.
-11. Recommend a technology-neutral solution first. Add implementation-specific examples only when the project technology has been positively identified.
-12. Provide verification steps that can falsify the finding or confirm the fix, then order the work by dependencies and expected value.
+4. Check whether browsing tools are available before considering a live URL. If they are unavailable, do not browse or crawl; proceed with repository evidence and supplied crawl exports, Lighthouse or performance reports, Search Console exports, rendered HTML, screenshots, and other artifacts.
+5. Identify the delivery model only after inspecting evidence. Record relevant technology facts, but keep the recommendations portable.
+6. Inspect crawlability and indexability: status codes, redirects and chains, robots directives, XML sitemaps, canonical URLs, duplicate URL variants, pagination, HTTPS/mixed content, and internal-link discovery.
+7. Inspect rendered and source document structure: title, description, headings, main content, landmarks, links, images, forms, URLs, Open Graph/social metadata, and structured data.
+8. Evaluate content quality and intent: topic alignment, usefulness, depth, duplication, thin or empty states, template repetition, and whether important content depends on rendering or interaction.
+9. Evaluate mobile compatibility, JavaScript rendering risks, internationalization and `hreflang`, Core Web Vitals or available performance evidence, and resource behavior that could affect crawling or user experience.
+10. Record positive practices as well as defects. Avoid turning valid variations into findings without a user, crawler, or maintainability consequence.
+11. Classify every finding by severity, confidence, affected scope, and effort. Prioritize using likely SEO impact, confidence, implementation effort, and number of affected pages.
+12. Recommend a technology-neutral solution first. Add implementation-specific examples only when the project technology has been positively identified.
+13. Provide verification steps that can falsify the finding or confirm the fix, then order the work by dependencies and expected value.
 
 Load `references/evidence-checklist.md` for the detailed inspection checklist. Load `references/report-template.md` when producing the full report or when consistent finding fields are needed.
 
@@ -74,6 +77,8 @@ For a site audit, sample deliberately: key templates, page types, locales, devic
 ## Source versus rendered/live review
 
 Source review can establish authored patterns, configuration, templates, and possible generated output. Rendered review can establish the effective DOM, visible content, client-side links, metadata after scripts run, and interaction-dependent content. Live review can additionally establish response behavior, redirects, headers, robots access, sitemap availability, and resource loading. State which layer supports each conclusion and label unobserved layers as verification gaps.
+
+When browsing tools are unavailable, source and supplied artifacts can confirm authored or reported behavior only. Treat live response status, redirect behavior, current robots and sitemap availability, deployed headers, indexing state, external rendering, and current field performance as requiring live-site or equivalent external verification.
 
 ## Standard report
 
