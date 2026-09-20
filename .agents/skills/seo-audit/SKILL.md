@@ -25,23 +25,9 @@ If scope is not stated, define the observed scope before auditing. Do not requir
 
 This is a source-code-only audit. Inspect only the current workspace and supplied local/offline evidence. Do not use browser tools, open or inspect a live website, require internet or network access, crawl a deployed website, invoke `/tests` or unrelated slash commands, generate tests, or modify files unless the user explicitly requests implementation. Do not refuse the audit because browser access is unavailable.
 
-## Mandatory file inspection
-
-Before generating any SEO audit, the agent must complete a real source inspection of the current workspace.
-
-1. Recursively inspect the current workspace and identify files relevant to SEO, content generation, metadata, routing, templates, configuration, and assets.
-2. Open and read the actual contents of relevant files using the available workspace file-reading and search tools. A directory inventory is only a discovery step and is never sufficient evidence for a completed audit.
-3. Search across the project for metadata, canonical URLs, robots directives, sitemap generation, structured data, headings, links, images, redirects, templates, hooks, imports, includes, and dynamic content patterns.
-4. Follow includes, imports, component references, template inheritance, hooks, and related files when needed to understand how the page or site is generated.
-5. Complete the full source inspection before writing the report. Do not state that source contents were not supplied before attempting to read the workspace files, and do not ask the user to paste files that are already available in the workspace.
-6. For WordPress projects, begin by inspecting the most relevant files when present: functions.php, header.php, footer.php, front-page.php, home.php, page.php, single.php, archive.php, search.php, 404.php, custom page templates, template-parts/, inc/, relevant JavaScript, relevant configuration, and style.css when metadata or theme output is relevant. Adapt this list to non-WordPress projects based on the actual technology in the workspace.
-7. Treat filenames as discovery hints only. The presence of a file name does not prove that the feature is implemented correctly.
-
-Do not produce a report based only on a directory listing or a filename inventory. The skill may only report confirmed findings after inspecting the relevant source files.
-
 ## Mandatory recursive source inspection
 
-The skill must recursively traverse the user-specified project, folder, or current workspace and inspect the actual contents of all SEO-relevant source files.
+Run `scripts/inventory.py` to enumerate the project structure without loading file contents, and then complete a real source inspection of the current workspace before producing any report.
 
 1. Enumerate all nested directories and files within the audit target.
 2. Identify SEO-relevant source files at every directory level.
@@ -50,6 +36,7 @@ The skill must recursively traverse the user-specified project, folder, or curre
 5. Search the entire audit target for SEO-related markup and implementation patterns.
 6. Continue until all reasonably relevant source files have been inspected.
 7. A recursive filename or directory inventory does not count as a source-code audit. The skill must not generate its final report from filenames alone.
+8. Treat filenames as discovery hints only. The presence of a file name does not prove that the feature is implemented correctly.
 
 The skill may skip binary image, font, video, dependency, generated build, test-result, cache, and minified vendor files where those are clearly not source-controlled behavior. However, it must inspect any source file that may control document titles, metadata, canonical URLs, robots directives, structured data, headings, semantic structure, internal links, navigation, images, content rendering, routing, redirects, indexability, asset loading, or performance-related behavior.
 
@@ -73,7 +60,7 @@ If workspace file-reading tools are unavailable or fail, the skill must report t
 ## Workflow
 
 1. Establish the workspace scope and available evidence. Record the workspace root, supplied folder scope, local reports, and important unavailable runtime evidence.
-2. Recursively inventory the current workspace before detailed review. Record nested paths, file types, templates/components, styles, scripts, assets, configuration, routes, content, reports, generated output, dependencies, and relevant patterns. Do not stop at the root or assume a fixed directory layout.
+2. Run `scripts/inventory.py` and then recursively inventory the current workspace before detailed review. Record nested paths, file types, templates/components, styles, scripts, assets, configuration, routes, content, reports, generated output, dependencies, and relevant patterns. Do not stop at the root or assume a fixed directory layout.
 3. Use workspace search and file-reading tools to inspect relevant files. Search for metadata, canonical URLs, robots directives, sitemap generators, structured data, headings, link patterns, image handling, redirects, routing, templates, hooks, imports, and content-generation functions across the project.
 4. Identify the actual technology only from workspace evidence. Record framework, CMS, language, templating, build, routing, or deployment facts only when supported by files; keep recommendations technology-neutral until then.
 5. Read the actual source in the relevant files before concluding anything about implementation. Follow includes, imports, partials, component calls, template inheritance, routing definitions, and configuration references to confirm how pages and metadata are generated.
