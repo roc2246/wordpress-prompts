@@ -14,18 +14,25 @@ Use this structure for a complete audit. Replace bracketed text and remove secti
 
 - Technology identified from source: [technology and evidence, or unknown]
 - Files and directories reviewed: [inventory summary]
+- Actual source files inspected: [list of files opened and read with scope]
+- Search terms and patterns used: [metadata, canonical, robots, headings, links, images, structured data, routes, templates, hooks, includes, redirects, etc.]
 - Local reports/artifacts reviewed: [list or none]
 - Explicit exclusions: [dependencies, generated output, unrelated files, or none]
 - Evidence limitations: [runtime behavior, deployment, live-site checks, or other gaps]
+- Unreadable files and tool failures: [none, or exact file and reason if applicable]
 
 ## 3. Confirmed SEO issues
 
 | ID | Category | Severity | Confidence | Affected scope | Evidence | Effort |
 | --- | --- | --- | --- | --- | --- | --- |
-| SEO-001 | [technical/on-page/semantic/performance/etc.] | [Critical/High/Medium/Low/Informational] | [High/Medium/Low] | [workspace file and code location/pattern] | [direct source evidence] | [Quick fix/Moderate effort/Significant effort] |
+| SEO-001 | [technical/on-page/semantic/performance/etc.] | [Critical/High/Medium/Low/Informational] | [High/Medium/Low] | [workspace file and code location/pattern] | [direct source evidence: exact path, function/template section, selector or pattern, line number or short excerpt] | [Quick fix/Moderate effort/Significant effort] |
 
 For each ID, explain:
 
+- Exact file path and relevant code location.
+- The function, template section, selector, or pattern involved.
+- A code excerpt or line reference when available.
+- What the code does and why it creates an SEO issue.
 - Why it matters.
 - Technology-neutral recommended solution.
 - Technology-specific implementation notes only when the technology is confirmed.
